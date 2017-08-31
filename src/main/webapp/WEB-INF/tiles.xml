@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+    <definition name="default" template="/WEB-INF/template/default.jsp"/>
+    <definition name="base.definition" template="/WEB-INF/template/template.jsp"/>
+
+    <!--主页-->
+    <definition name="index" extends="base.definition">
+        <put-attribute name="head" value="/WEB-INF/head/head.jsp"/>
+        <put-attribute name="lift" value="/WEB-INF/lift_column/home.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/body/home.jsp"/>
+        <put-attribute name="page" value=""/>
+        <put-attribute name="jquery" value="/WEB-INF/jQuery/jQuery.jsp"/>
+    </definition>
+
+    <!--全部-->
+    <definition name="portfolio" extends="index">
+        <put-attribute name="content" value="/WEB-INF/body/content.jsp"/>
+        <put-attribute name="lift" value="/WEB-INF/lift_column/portfolio.jsp"/>
+        <put-attribute name="page" value="/WEB-INF/body/page.jsp"/>
+    </definition>
+
+    <!--详情-->
+    <definition name="about" extends="index">
+        <put-attribute name="lift" value="/WEB-INF/lift_column/about.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/body/about.jsp"/>
+    </definition>
+    <!--详细图片-->
+    <definition name="single" extends="index">
+        <put-attribute name="content" value="/WEB-INF/body/single.jsp"/>
+        <put-attribute name="lift" value="/WEB-INF/lift_column/single.jsp"/>
+        <put-attribute name="page" value=""/>
+    </definition>
+    <!--翻页模板-->
+    <definition name="page" extends="default">
+        <put-attribute name="content" value="/WEB-INF/body/content.jsp"/>
+    </definition>
+    <!--main-->
+    <definition name="main" extends="index">
+        <put-attribute name="content" value="/WEB-INF/root/main.jsp"/>
+    </definition>
+    <!--添加-->
+    <definition name="add_doc" extends="index">
+        <put-attribute name="content" value="/WEB-INF/root/add_doc.jsp"/>
+    </definition>
+    <!--信息-->
+    <definition name="info" extends="index">
+        <put-attribute name="content" value="/WEB-INF/root/info.jsp"/>
+    </definition>
+    <!--添加图片-->
+    <definition name="add_img" extends="index">
+        <put-attribute name="content" value="/WEB-INF/root/add_img.jsp"/>
+    </definition>
+    <!--登录-->
+    <definition name="login" extends="index">
+        <put-attribute name="content" value="/WEB-INF/root/login.jsp"/>
+    </definition>
+
+</tiles-definitions>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.how2java.mapper.CarvingMapper">
+    <insert id="add" parameterType="Carving" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO Carving (name,detailed) VALUES (#{name},#{detailed})
+    </insert>
+    <insert id="addImg" parameterType="Img_url">
+        INSERT INTO Img_url (img_id,url) VALUES (#{img_id},#{url})
+    </insert>
+    <update id="update" parameterType="Carving">
+        UPDATE Carving SET head_img=#{head_img} WHERE id=#{id}
+    </update>
+    <select id="search" parameterType="Carving" resultType="Carving">
+        SELECT * FROM Carving WHERE name LIKE #{name} OR detailed LIKE #{name} LIMIT  #{start},40
+    </select>
+    <select id="list" parameterType="Carving" resultType="Carving">
+        SELECT * FROM Carving LIMIT #{start},40
+    </select>
+    <select id="get" parameterType="int" resultType="Carving">
+        SELECT * FROM Carving WHERE id=#{id}
+    </select>
+    <select id="getUrl" parameterType="Carving" resultType="Img_url">
+        SELECT url FROM Img_url WHERE img_id=#{id}
+    </select>
+    <select id="sum" resultType="int">
+        SELECT COUNT(*) FROM Carving
+    </select>
+    <delete id="delete" parameterType="Carving">
+       DELETE i.*,c.* FROM Carving c LEFT JOIN Img_url i ON c.id = i.img_id WHERE c.id = #{id};
+    </delete>
+
+
+    <!--create table if not exists `c`(-->
+    <!--`id` int UNSIGNED AUTO_INCREMENT,-->
+    <!--`name` varchar(20),-->
+    <!--`desiled` varchar(50),-->
+    <!--`head_img` varchar(100),-->
+    <!--PRIMARY KEY (`id`)-->
+    <!--)ENGINE=InnoDB DEFAULT CHARSET=utf8;-->
+
+    <!--create table if not exists `Img_url`(-->
+    <!--`id` int UNSIGNED AUTO_INCREMENT,-->
+    <!--`img_id` varchar(20),-->
+    <!--`url` varchar(100),-->
+    <!--PRIMARY KEY (`id`)-->
+    <!--)ENGINE=InnoDB DEFAULT CHARSET=utf8;-->
+
+</mapper>
